@@ -18,6 +18,10 @@ const confirmDialog = document.getElementById('confirm-dialog');
 const confirmMessage = document.getElementById('confirm-message');
 const confirmCancel = document.getElementById('confirm-cancel');
 const confirmOk = document.getElementById('confirm-ok');
+const bannerLeftBtn = document.getElementById('banner-left');
+const bannerRightBtn = document.getElementById('banner-right');
+const bannerOffBtn = document.getElementById('banner-off');
+const bannerLabel = document.getElementById('banner-label');
 
 // Apply all translatable strings to the UI
 function applyTranslations() {
@@ -27,6 +31,7 @@ function applyTranslations() {
   windowToggleLabelEl.textContent = t.windowGrouping;
   confirmCancel.textContent = t.cancel;
   confirmOk.textContent = t.close;
+  bannerLabel.textContent = t.edgeBanner;
   updateWindowToggle();
   updateWindowFilter();
   render();
@@ -384,6 +389,43 @@ closeOldEl.addEventListener('click', async () => {
   }
 });
 
+// Banner settings
+function updateBannerButtons(side, visible) {
+  bannerLeftBtn.classList.toggle('active', visible && side === 'left');
+  bannerRightBtn.classList.toggle('active', visible && side === 'right');
+  bannerOffBtn.classList.toggle('active', !visible);
+}
+
+async function initBannerSettings() {
+  const { bannerSide, bannerVisible } = await chrome.storage.local.get(['bannerSide', 'bannerVisible']);
+  const side = bannerSide || 'right';
+  const visible = bannerVisible !== false;
+  updateBannerButtons(side, visible);
+}
+
+bannerLeftBtn.addEventListener('click', async () => {
+  await chrome.storage.local.set({ bannerSide: 'left', bannerVisible: true });
+  updateBannerButtons('left', true);
+});
+
+bannerRightBtn.addEventListener('click', async () => {
+  await chrome.storage.local.set({ bannerSide: 'right', bannerVisible: true });
+  updateBannerButtons('right', true);
+});
+
+bannerOffBtn.addEventListener('click', async () => {
+  await chrome.storage.local.set({ bannerVisible: false });
+  updateBannerButtons('right', false);
+});
+
+// Register with background so it knows the panel is open
+const panelPort = chrome.runtime.connect({ name: 'sidepanel' });
+panelPort.onMessage.addListener((msg) => {
+  if (msg.type === 'close') {
+    window.close();
+  }
+});
+
 // Listen for tab changes from background
 chrome.runtime.onMessage.addListener((msg) => {
   if (msg.type === 'tabs-changed') {
@@ -397,6 +439,7 @@ async function init() {
   initLangSelect();
   await initTheme();
   await initSettings();
+  await initBannerSettings();
   applyTranslations();
   await loadTabs();
 }

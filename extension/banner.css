@@ -1,0 +1,50 @@
+#tab-manager-banner {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2147483647;
+  width: 28px;
+  height: 72px;
+  background: linear-gradient(180deg, #1a73e8 0%, #1557b0 100%);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: width 0.15s ease, opacity 0.15s ease;
+  opacity: 0.7;
+  padding: 0;
+  left: auto;
+  right: auto;
+}
+
+#tab-manager-banner:hover {
+  width: 34px;
+  opacity: 1;
+}
+
+#tab-manager-banner.right {
+  right: 0;
+  left: auto;
+  border-radius: 8px 0 0 8px;
+}
+
+#tab-manager-banner.left {
+  left: 0;
+  right: auto;
+  border-radius: 0 8px 8px 0;
+}
+
+#tab-manager-banner svg {
+  width: 16px;
+  height: 16px;
+  fill: white;
+  flex-shrink: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  #tab-manager-banner {
+    background: linear-gradient(180deg, #8ab4f8 0%, #669df6 100%);
+  }
+}
