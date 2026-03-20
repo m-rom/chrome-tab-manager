@@ -22,6 +22,7 @@ const translations = {
     cancel: 'Cancel',
     close: 'Close',
     now: 'now',
+    edgeBanner: 'Quick-open banner',
   },
   de: {
     searchPlaceholder: 'Tabs suchen...',
@@ -46,6 +47,7 @@ const translations = {
     cancel: 'Abbrechen',
     close: 'Schließen',
     now: 'jetzt',
+    edgeBanner: 'Schnellöffner-Banner',
   },
   fr: {
     searchPlaceholder: 'Rechercher des onglets...',
@@ -70,6 +72,7 @@ const translations = {
     cancel: 'Annuler',
     close: 'Fermer',
     now: 'maintenant',
+    edgeBanner: 'Bandeau latéral',
   },
   es: {
     searchPlaceholder: 'Buscar pestañas...',
@@ -94,6 +97,7 @@ const translations = {
     cancel: 'Cancelar',
     close: 'Cerrar',
     now: 'ahora',
+    edgeBanner: 'Banner lateral',
   },
 };
 

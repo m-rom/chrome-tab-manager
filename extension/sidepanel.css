@@ -509,6 +509,55 @@ body {
   background: var(--danger-hover);
 }
 
+/* Banner settings */
+.banner-settings {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.banner-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.banner-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.banner-controls {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.banner-side-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 26px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.banner-side-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.banner-side-btn.active {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
 /* Empty state */
 .empty-state {
   text-align: center;

@@ -1,0 +1,24 @@
+{
+  "name": "chrome",
+  "version": "1.0.0",
+  "description": "A Chrome Side Panel extension that groups all your open tabs by domain, sorted by most recently accessed. Designed for users who work with many tabs and need a better way to stay organized.",
+  "main": "background.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Benjamin410/chrome-tab-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Benjamin410/chrome-tab-manager/issues"
+  },
+  "homepage": "https://github.com/Benjamin410/chrome-tab-manager#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}
