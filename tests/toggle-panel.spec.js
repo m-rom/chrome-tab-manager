@@ -7,14 +7,14 @@ test.describe('Toggle Side Panel', () => {
 
   // ── Manifest: Shortcut korrekt deklariert ──────────────────────────
 
-  test('manifest declares Cmd+Shift+M / Ctrl+Shift+M shortcut for _execute_action', async () => {
+  test('manifest declares Cmd+M / Ctrl+M shortcut for _execute_action', async () => {
     const manifestPath = path.resolve(__dirname, '..', 'extension', 'manifest.json');
     const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
 
     expect(manifest.commands).toBeDefined();
     expect(manifest.commands._execute_action).toBeDefined();
-    expect(manifest.commands._execute_action.suggested_key.mac).toBe('Command+Shift+M');
-    expect(manifest.commands._execute_action.suggested_key.default).toBe('Ctrl+Shift+M');
+    expect(manifest.commands._execute_action.suggested_key.mac).toBe('Command+M');
+    expect(manifest.commands._execute_action.suggested_key.default).toBe('Ctrl+M');
   });
 
   test('manifest enables openPanelOnActionClick via side_panel config', async () => {
@@ -163,7 +163,7 @@ test.describe('Toggle Side Panel', () => {
 
   // ── Keyboard Shortcut ──────────────────────────────────────────────
 
-  test('Ctrl+Shift+M / Cmd+Shift+M shortcut is registered in chrome.commands', async ({ context }) => {
+  test('Ctrl+M / Cmd+M shortcut is registered in chrome.commands', async ({ context }) => {
     let sw = context.serviceWorkers()[0];
     if (!sw) sw = await context.waitForEvent('serviceworker');
 
@@ -173,9 +173,8 @@ test.describe('Toggle Side Panel', () => {
 
     const actionCmd = commands.find(c => c.name === '_execute_action');
     expect(actionCmd).toBeDefined();
-    // Chrome may not assign the shortcut if it conflicts with a built-in binding,
-    // but the command itself must be registered. The manifest test above verifies
-    // the suggested_key values.
+    // Verify the shortcut is set (format varies by OS)
+    expect(actionCmd.shortcut).toBeTruthy();
   });
 
   test('keyboard shortcut attempts dispatch via CDP (best-effort)', async ({ context }) => {
@@ -190,8 +189,7 @@ test.describe('Toggle Side Panel', () => {
     const cdp = await context.newCDPSession(page);
 
     const isMac = process.platform === 'darwin';
-    // CDP modifiers: Alt=1, Ctrl=2, Meta=4, Shift=8
-    const modifier = isMac ? (4 | 8) : (2 | 8); // Meta+Shift or Ctrl+Shift
+    const modifier = isMac ? 8 : 2; // 8 = Meta, 2 = Control
 
     const pagesBefore = context.pages().length;
 

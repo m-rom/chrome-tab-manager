@@ -11,7 +11,7 @@ A Chrome Side Panel extension that groups all your open tabs by domain, sorted b
 - **Window filter** — Filter to show only tabs from a specific window
 - **Search** — Filter tabs by title or URL in real-time
 - **Close actions** — Close individual tabs, all tabs of a domain, or all tabs older than 7 days
-- **Keyboard shortcut** — `Cmd+Shift+M` (Mac) / `Ctrl+Shift+M` (Windows/Linux) to toggle the side panel
+- **Keyboard shortcut** — `Cmd+M` (Mac) / `Ctrl+M` (Windows/Linux) to toggle the side panel
 - **Quick-open banner** — Clickable banner on the page edge to open/close the panel, configurable (left/right/off)
 - **Light & dark theme** — Follows your system theme automatically, with a manual toggle
 - **Multi-language** — English, German, French, and Spanish (auto-detected from browser, switchable)
@@ -42,7 +42,7 @@ To include incognito tabs in the list:
 | Action | How |
 |--------|-----|
 | Open the panel | Click the extension icon in the toolbar |
-| Open/close via shortcut | `Cmd+Shift+M` (Mac) / `Ctrl+Shift+M` (Windows/Linux) |
+| Open/close via shortcut | `Cmd+M` (Mac) / `Ctrl+M` (Windows/Linux) |
 | Open/close via banner | Click the edge banner on the page |
 | Configure banner position | Left/Right/Off buttons in the panel |
 | Switch to a tab | Click on it in the list |
