@@ -63,8 +63,11 @@ test.describe('Tab Grouping — Button Visibility', () => {
     // Hidden by default
     await expect(groupBtn).toHaveCSS('opacity', '0');
 
-    // Visible on hover (allow time for CSS transition under xvfb)
-    await group.locator('.domain-header').hover();
+    // Hover via explicit mouse move for xvfb compatibility
+    const header = group.locator('.domain-header');
+    const box = await header.boundingBox();
+    await panel.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await groupBtn.waitFor({ state: 'visible' });
     await expect(groupBtn).toHaveCSS('opacity', '1', { timeout: 5000 });
   });
 
