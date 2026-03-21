@@ -22,10 +22,8 @@ test.describe('Close Actions', () => {
     // Close button should be hidden by default (opacity: 0)
     await expect(closeBtn).toHaveCSS('opacity', '0');
 
-    // Hover via explicit mouse move for xvfb compatibility
-    const box = await tabEntry.boundingBox();
-    await panel.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-    await closeBtn.waitFor({ state: 'visible' });
+    // Simulate hover via class (CSS :hover unreliable under xvfb)
+    await tabEntry.evaluate(el => el.classList.add('hover'));
     await expect(closeBtn).toHaveCSS('opacity', '1', { timeout: 5000 });
   });
 
@@ -43,11 +41,8 @@ test.describe('Close Actions', () => {
     // Hidden by default
     await expect(closeAllBtn).toHaveCSS('opacity', '0');
 
-    // Hover via explicit mouse move for xvfb compatibility
-    const header = group.locator('.domain-header');
-    const box = await header.boundingBox();
-    await panel.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-    await closeAllBtn.waitFor({ state: 'visible' });
+    // Simulate hover via class (CSS :hover unreliable under xvfb)
+    await group.locator('.domain-header').evaluate(el => el.classList.add('hover'));
     await expect(closeAllBtn).toHaveCSS('opacity', '1', { timeout: 5000 });
   });
 

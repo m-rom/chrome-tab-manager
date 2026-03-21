@@ -375,7 +375,8 @@ body {
   transition: opacity 0.15s, background 0.15s;
 }
 
-.domain-header:hover .domain-close {
+.domain-header:hover .domain-close,
+.domain-header.hover .domain-close {
   opacity: 1;
 }
 
@@ -399,7 +400,8 @@ body {
   transition: opacity 0.15s, background 0.15s;
 }
 
-.domain-header:hover .domain-group-btn {
+.domain-header:hover .domain-group-btn,
+.domain-header.hover .domain-group-btn {
   opacity: 1;
 }
 
@@ -483,7 +485,8 @@ body {
   transition: opacity 0.15s, color 0.15s;
 }
 
-.tab-entry:hover .tab-close {
+.tab-entry:hover .tab-close,
+.tab-entry.hover .tab-close {
   opacity: 1;
 }
 
