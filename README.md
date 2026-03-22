@@ -2,6 +2,21 @@
 
 A Chrome Side Panel extension that groups all your open tabs by domain, sorted by most recently accessed. Designed for users who work with many tabs and need a better way to stay organized.
 
+<p align="center">
+  <img src="store/screenshots/01-light-overview.png" alt="Tab Manager — Light Theme" width="640">
+</p>
+
+<p align="center">
+  <img src="store/screenshots/02-dark-overview.png" alt="Tab Manager — Dark Theme" width="640">
+</p>
+
+### Search & Multi-Language
+
+<p align="center">
+  <img src="store/screenshots/03-search.png" alt="Tab Manager — Search" width="640">
+  <img src="store/screenshots/04-german.png" alt="Tab Manager — German" width="640">
+</p>
+
 ## Features
 
 - **Domain grouping** — Tabs are grouped by website domain in an accordion layout
@@ -23,7 +38,7 @@ A Chrome Side Panel extension that groups all your open tabs by domain, sorted b
 
 ### From Chrome Web Store
 
-Install directly from the [Chrome Web Store](https://chrome.google.com/webstore/detail/TODO) — updates are delivered automatically.
+Install directly from the [Chrome Web Store](https://chromewebstore.google.com/detail/tab-manager/maloipbklbokfhfnfpombeeaoalomlcd) — updates are delivered automatically.
 
 ### For Development
 

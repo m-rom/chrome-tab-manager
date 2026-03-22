@@ -5,6 +5,6 @@
 .superpowers/
 node_modules/
 dist/
-store/screenshots/
+store/screenshots/_*
 test-results/
 playwright-report/
