@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Tab Manager",
   "version": "1.0.0",
-  "description": "Alle Tabs nach Domain gruppiert im Side Panel verwalten",
+  "description": "Organize all your tabs by domain in a side panel. Search, group, and manage multiple windows.",
   "permissions": ["tabs", "tabGroups", "sidePanel", "storage"],
   "content_scripts": [{
     "matches": ["<all_urls>"],

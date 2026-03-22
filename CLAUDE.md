@@ -46,3 +46,48 @@ Every PR should follow this structure:
 - E2E tests added/updated for new features or behavior changes
 - Existing tests still pass (`npm test`)
 - README updated if user-facing behavior changed
+
+## Release Process
+
+The extension is published to the Chrome Web Store (unlisted) via GitHub Actions. The workflow is triggered by pushing a git tag.
+
+### How to release a new version
+
+1. **Bump the version** in `extension/manifest.json` (follow semver: `major.minor.patch`)
+2. **Commit the version bump**:
+   ```bash
+   git add extension/manifest.json
+   git commit -m "Bump version to X.Y.Z"
+   git push
+   ```
+3. **Create and push a tag** (must match the manifest version):
+   ```bash
+   git tag vX.Y.Z
+   git push --tags
+   ```
+4. The GitHub Action (`.github/workflows/publish.yml`) will:
+   - Run all E2E tests
+   - Verify the tag version matches `manifest.json`
+   - Build the ZIP and upload to Chrome Web Store
+   - Publish automatically
+
+### Build script
+
+```bash
+./scripts/build.sh    # creates dist/tab-manager-vX.Y.Z.zip for manual upload
+```
+
+### Required GitHub Secrets
+
+These secrets must be configured in the repo (Settings → Secrets → Actions):
+
+- `CHROME_EXTENSION_ID` — Extension ID from Chrome Developer Dashboard
+- `CHROME_CLIENT_ID` — Google OAuth 2.0 Client ID
+- `CHROME_CLIENT_SECRET` — Google OAuth 2.0 Client Secret
+- `CHROME_REFRESH_TOKEN` — OAuth refresh token for Chrome Web Store API
+
+### Store Listing
+
+- `store/listing-en.md` — English store description
+- `store/listing-de.md` — German store description
+- `docs/privacy-policy.html` — Privacy policy (hosted via GitHub Pages)

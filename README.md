@@ -21,6 +21,12 @@ A Chrome Side Panel extension that groups all your open tabs by domain, sorted b
 
 ## Installation
 
+### From Chrome Web Store
+
+Install directly from the [Chrome Web Store](https://chrome.google.com/webstore/detail/TODO) — updates are delivered automatically.
+
+### For Development
+
 1. Clone or download this repository
 2. Open `chrome://extensions` in Chrome
 3. Enable **Developer mode** (toggle in the top right)
